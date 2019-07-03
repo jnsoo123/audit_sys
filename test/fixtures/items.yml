@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  date_purchased: 2019-07-02 16:24:41
+  category: one
+  specs: MyText
+
+two:
+  name: MyString
+  date_purchased: 2019-07-02 16:24:41
+  category: two
+  specs: MyText

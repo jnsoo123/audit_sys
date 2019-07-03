@@ -1,0 +1,26 @@
+.items-index
+  .clearfix
+    .float-left
+      h3 Items
+    .float-right
+      = link_to 'Create', new_item_path, class: 'btn btn-primary'
+
+  br
+
+  = search_form_for @q do |f|
+    = f.search_field :name_or_specs_cont, class: 'form-control', placeholder: 'Search a name or spec...'
+
+  br 
+
+  table.table.table-bordered
+    thead
+      tr
+        th Name
+        th Category
+        th Date Purchased
+    tbody
+      - @items.each do |item|
+        tr
+          td= item.name
+          td= item.category.name
+          td= item.date_purchased

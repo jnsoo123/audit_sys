@@ -1,0 +1,12 @@
+.items-new
+  .clearfix
+    h3 New Item
+  br 
+  = simple_form_for @item do |f|
+    = f.input :name
+    = f.input :date_purchased, input_html: { class: 'datepicker' }
+    = f.input :specs, as: :text
+    = f.input :category_id, collection: @categories
+    = f.button :submit, class: 'btn-primary'
+    = f.button :button, 'Clear', type: 'reset', class: 'btn btn-outline-primary', style: 'margin-left: 4px;'
+

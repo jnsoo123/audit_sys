@@ -1,0 +1,13 @@
+@import "bootswatch/cosmo/variables";
+@import "bootstrap";
+@import "bootstrap-datepicker";
+@import "bootswatch/cosmo/bootswatch";
+
+body {
+  margin-top: 20px;
+}
+
+nav {
+  border-bottom: 2px solid #f47421;
+  margin-bottom: 20px;
+}

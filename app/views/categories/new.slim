@@ -1,0 +1,9 @@
+.categories-new
+  .clearfix
+    h3 New Category
+  br 
+  = simple_form_for @category do |f|
+    = f.input :name
+    = f.button :submit, class: 'btn-primary'
+    = f.button :button, 'Clear', type: 'reset', class: 'btn btn-outline-primary', style: 'margin-left: 4px;'
+
