@@ -29,7 +29,7 @@
   })
 
 function dynamicBackgroundColor() {
-  var $items = $('.items-index .badge')
+  var $items = $('.items-index .badge, .categories-index .badge')
 
   $items.map(function(i, item){
     console.log(item)
