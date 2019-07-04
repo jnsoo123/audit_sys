@@ -20,8 +20,38 @@
 //= require_tree .
 
 
-  $(document).ready(function(){
+  $(document).on('turbolinks:load', function(){
     $('.datepicker').datepicker({
       format: 'dd/mm/yyyy'
     })
+
+    dynamicBackgroundColor()
   })
+
+function dynamicBackgroundColor() {
+  var $items = $('.items-index .badge')
+
+  $items.map(function(i, item){
+    console.log(item)
+    var rgb = $(item).css('background-color')
+
+    if (rgb.match(/^rgb/)) {
+      var a = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/)
+      var r = a[1]
+      var g = a[2]
+      var b = a[3]
+    }
+
+    var hsp = Math.sqrt(
+      0.299 * (r * r) +
+      0.587 * (g * g) +
+      0.114 * (b * b)
+    )
+
+    if (hsp > 127.5) {
+      $(item).css('color', '#000');
+    } else {
+      $(item).css('color', '#fff');
+    }
+  })
+}

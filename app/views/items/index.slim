@@ -16,11 +16,18 @@
     thead
       tr
         th Name
-        th Category
         th Date Purchased
+        th Specs
+        th Actions
     tbody
       - @items.each do |item|
         tr
-          td= item.name
-          td= item.category.name
+          td
+            = item.name
+            span.badge.ml-2 data-background-color='#{item.category.color}' style="background-color: #{item.category.color};"= item.category.name
           td= item.date_purchased
+          td= item.specs
+          td
+            .btn-group
+              = link_to icon('fas', 'pen', ' Edit'), nil, class: 'btn btn-info btn-sm'
+              = link_to icon('fas', 'trash', ' Delete'), nil, class: 'btn btn-danger btn-sm'

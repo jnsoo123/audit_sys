@@ -4,6 +4,7 @@
   br 
   = simple_form_for @category do |f|
     = f.input :name
+    = f.input :color, as: :color, input_html: { style: 'width: 44px;' }
     = f.button :submit, class: 'btn-primary'
     = f.button :button, 'Clear', type: 'reset', class: 'btn btn-link', style: 'margin-left: 4px;'
 

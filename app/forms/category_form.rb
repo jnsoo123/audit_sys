@@ -2,10 +2,12 @@ class CategoryForm
   include ActiveModel::Model
 
   attr_accessor(
-    :name
+    :name,
+    :color
   )
 
-  validates :name, presence: true
+  validates :name,  presence: true
+  validates :color, presence: true
 
   def save
     return false if invalid?
@@ -20,7 +22,8 @@ class CategoryForm
 
   def create_category
     Category.create(
-      name: name
+      name: name,
+      color: color
     )
   end
 end

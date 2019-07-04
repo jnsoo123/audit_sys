@@ -12,12 +12,14 @@ class CategoriesController < ApplicationController
 
     if @category.save
       redirect_to categories_path, notice: 'Category Created !!'
+    else
+      render :new
     end
   end
 
   private
 
   def category_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:name, :color)
   end
 end
