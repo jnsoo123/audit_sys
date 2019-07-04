@@ -1,13 +1,27 @@
-@import "bootswatch/cosmo/variables";
+@import "bootswatch/pulse/variables";
 @import "bootstrap";
 @import "bootstrap-datepicker";
-@import "bootswatch/cosmo/bootswatch";
+@import "bootswatch/pulse/bootswatch";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 body {
   margin-top: 20px;
 }
 
 nav {
-  border-bottom: 2px solid #f47421;
+//  border-bottom: 2px solid #f47421;
   margin-bottom: 20px;
+}
+
+.login-form {
+  width: 500px;
+  background-color: whitesmoke;
+  padding: 20px;
+}
+
+.sessions-new {
+  .row {
+    height: 500px;
+  }
 }

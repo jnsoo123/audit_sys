@@ -1,0 +1,7 @@
+h1= icon('fas', 'user-edit', ' Edit Account Information')
+hr
+
+= simple_form_for @user, url: account_informations_path, method: :put do |f|
+  = f.input :user_name, label: 'Name'
+  = f.input :user_email, label: 'Email'
+  = f.submit 'Update Account Information', class: 'btn btn-primary'

@@ -1,0 +1,8 @@
+h1= icon('fas', 'key', ' Change Password')
+hr
+
+= simple_form_for @user, url: change_passwords_path, method: :put do |f|
+  = f.input :user_old_password, label: 'Old Password'
+  = f.input :user_password, label: 'New Password'
+  = f.input :user_password_confirmation, label: 'Confirm New Password'
+  = f.submit 'Change Password', class: 'btn btn-primary'

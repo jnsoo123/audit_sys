@@ -1,0 +1,21 @@
+h1= icon('far', 'user-circle', ' Account Information') 
+hr
+
+.row
+  .col-12.col-md-3
+    b Name
+  .col-12.col-md-9
+    span= current_user.name
+  .col-12.col-md-3
+    b Email
+  .col-12.col-md-9
+    span= current_user.email
+  .col-12.col-md-3
+    b Created At
+  .col-12.col-md-9
+    span= current_user.created_at
+
+br
+.btn-group role='group'
+  = link_to icon('fas', 'user-edit', ' Update Account'), edit_account_informations_path, class: 'btn btn-success'
+  = link_to icon('fas', 'key', ' Change Password'), edit_change_passwords_path, class: 'btn btn-warning'
