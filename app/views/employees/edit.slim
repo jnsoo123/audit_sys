@@ -1,0 +1,10 @@
+.employees-edit
+  .clearfix
+    h3 Edit Employee
+  br 
+  = simple_form_for @employee_form, url: employee_path, method: :put do |f|
+    = f.input :name, input_html: { autocomplete: 'off', autofocus: 'on' }
+    = f.input :emp_id, label: 'Employee ID', input_html: { autocomplete: 'off' }
+    = f.submit 'Update Employee', class: 'btn btn-primary'
+    = f.button :button, 'Clear', type: 'reset', class: 'btn btn-link', style: 'margin-left: 4px;'
+

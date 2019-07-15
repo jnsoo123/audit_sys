@@ -1,0 +1,10 @@
+.employees-new
+  .clearfix
+    h3 New Employee
+  br 
+  = simple_form_for @employee_form do |f|
+    = f.input :name, input_html: { autocomplete: 'off', autofocus: 'on' }
+    = f.input :emp_id, label: 'Employee ID', input_html: { autocomplete: 'off' }
+    = f.button :submit, class: 'btn-primary'
+    = f.button :button, 'Clear', type: 'reset', class: 'btn btn-link', style: 'margin-left: 4px;'
+

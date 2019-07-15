@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :items,      only: [:create, :new, :index, :edit, :update, :destroy]
+  resources :items,      only: [:index, :new, :create, :edit, :update, :destroy]
   resources :builds,     only: [:index, :new, :create, :edit, :update, :destroy]
-  resources :categories, only: [:create, :new, :index, :edit, :update, :destroy]
+  resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :employees,  only: [:index, :new, :create, :edit, :update, :destroy]
   resource  :user,       only: [:show]
 
   scope module: :users, path: 'users' do
