@@ -12,7 +12,8 @@ class EmployeesController < ApplicationController
 
   def create
     @employee_form = EmployeeForm.new(employee_params)
-    if @employee_form.save
+
+    if @employee_form.persist
       redirect_to employees_path, notice: 'Employee Created !!'
     else
       render :new
@@ -20,12 +21,14 @@ class EmployeesController < ApplicationController
   end
 
   def edit
-    @employee_form = EmployeeForm.new(employee: @employee)
+    @employee_form = EmployeeForm.new(object: @employee)
   end
 
   def update
-    @employee_form = EmployeeForm.new(employee_params.merge(employee: @employee))
-    if @employee_form.update
+    hash_params    = employee_params.merge(object: @employee)
+    @employee_form = EmployeeForm.new(hash_params)
+
+    if @employee_form.persist
       redirect_to employees_path, notice: 'Employee Updated !!'
     else
       render :edit

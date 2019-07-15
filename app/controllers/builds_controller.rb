@@ -13,25 +13,25 @@ class BuildsController < ApplicationController
 
   def create
     @build = BuildForm.new(build_params)
-    if @build.save
+    if @build.persist
       redirect_to builds_path, notice: 'Build Created !!'
     end
   end
 
   def edit
-    @build_form = BuildForm.new(build: @build)
+    @build_form = BuildForm.new(object: @build)
   end
 
   def update
-    @build_form = BuildForm.new(build_params.merge(build: @build))
+    @build_form = BuildForm.new(build_params.merge(object: @build))
 
-    if @build_form.update
+    if @build_form.persist
       redirect_to builds_path, notice: 'Build Updated !!'
     end
   end
 
   def destroy
-    @build_form = BuildForm.new(build: @build)
+    @build_form = BuildForm.new(object: @build)
 
     if @build_form.destroy
       redirect_to builds_path, notice: 'Build Deleted !!'

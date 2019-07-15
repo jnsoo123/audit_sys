@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
   def create
     @category = CategoryForm.new(category_params)
 
-    if @category.save
+    if @category.persist
       redirect_to categories_path, notice: 'Category Created !!'
     else
       render :new
@@ -18,13 +18,13 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = CategoryForm.new(category: category)
+    @category = CategoryForm.new(object: category)
   end
   
   def update
-    @category = CategoryForm.new(category_params.merge(category: category))
+    @category = CategoryForm.new(category_params.merge(object: category))
     
-    if @category.update
+    if @category.persist
       redirect_to categories_path, notice: 'Category Updated !!'
     else
       render :edit
@@ -32,7 +32,7 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category = CategoryForm.new(category: category)
+    @category = CategoryForm.new(object: category)
 
     if @category.destroy
       redirect_to categories_path, notice: 'Category Destroyed !!'

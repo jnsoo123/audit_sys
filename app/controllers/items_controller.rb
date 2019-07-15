@@ -13,21 +13,21 @@ class ItemsController < ApplicationController
   def create
     @item = ItemForm.new(item_params)
 
-    if @item.save
+    if @item.persist
       redirect_to root_path, notice: 'Item Created !!'
     end
   end
 
   def edit
-    @item       = ItemForm.new(item: item)
+    @item       = ItemForm.new(object: item)
     @categories = Category.all
     @builds     = Build.all
   end
 
   def update
-    @item = ItemForm.new(item_params.merge(item: item))
+    @item = ItemForm.new(item_params.merge(object: item))
 
-    if @item.update
+    if @item.persist
       redirect_to items_path, notice: 'Item Updated'
     else
       render :edit
@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = ItemForm.new(item: item)
+    @item = ItemForm.new(object: item)
 
     if @item.destroy
       redirect_to items_path

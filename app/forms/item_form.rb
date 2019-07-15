@@ -1,8 +1,6 @@
-class ItemForm 
-  include ActiveModel::Model
-
+class ItemForm < FormObject
   attr_accessor(
-    :item,
+    :object,
     :name,
     :date_purchased,
     :specs,
@@ -13,52 +11,25 @@ class ItemForm
   validates :name,           presence: true
   validates :date_purchased, presence: true
 
-  def initialize(attr={})
-    super
-    set_attributes if @item.present?
-  end
-
-  def save
-    return false if invalid?
-    create_item
-  end
-
-  def update
-    return false if invalid?
-    update_item
-  end
-  
-  def destroy
-    return false if invalid?
-    destroy_item
-  end
-
   def self.model_name
     ActiveModel::Name.new(self, nil, 'Item')
   end
 
   private
 
+  def klass
+    Item
+  end
+
   def set_attributes
-    @name           ||= @item.name
-    @date_purchased ||= @item.date_purchased
-    @specs          ||= @item.specs
-    @category_id    ||= @item.category_id
-    @build_id       ||= @item.build_id end
-
-  def create_item
-    Item.create(item_params)
+    @name           ||= self.object.name
+    @date_purchased ||= self.object.date_purchased
+    @specs          ||= self.object.specs
+    @category_id    ||= self.object.category_id
+    @build_id       ||= self.object.build_id
   end
 
-  def update_item
-    @item.update(item_params)
-  end
-
-  def destroy_item
-    @item.destroy
-  end
-
-  def item_params
+  def object_params
     {
       name:           @name,
       date_purchased: @date_purchased,

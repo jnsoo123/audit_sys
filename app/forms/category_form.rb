@@ -1,8 +1,6 @@
-class CategoryForm
-  include ActiveModel::Model
-
+class CategoryForm < FormObject
   attr_accessor(
-    :category,
+    :object,
     :name,
     :color
   )
@@ -10,50 +8,22 @@ class CategoryForm
   validates :name,  presence: true
   validates :color, presence: true
 
-  def initialize(attr={})
-    super
-    set_attributes if self.category.present?
-  end
-
-  def save
-    return false if invalid?
-    create_category
-  end
-
-  def update
-    return false if invalid?
-    update_category
-  end
-
-  def destroy
-    return false if invalid?
-    destroy_category
-  end
-
   def self.model_name
     ActiveModel::Name.new(self, nil, 'Category')
   end
 
   private
 
+  def klass
+    Category
+  end
+
   def set_attributes
-    @name  ||= self.category.name
-    @color ||= self.category.color
+    @name  ||= self.object.name
+    @color ||= self.object.color
   end
 
-  def create_category
-    Category.create(category_params)
-  end
-
-  def update_category
-    @category.update(category_params)
-  end
-
-  def destroy_category
-    @category.destroy
-  end
-
-  def category_params
+  def object_params
     {
       name:  @name,
       color: @color
