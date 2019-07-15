@@ -1,25 +1,17 @@
 module Users
-  class ChangePasswordForm
-    include ActiveModel::Model
-
+  class ChangePasswordForm < FormObject
     attr_accessor(
-      :user,
-      :user_old_password,
-      :user_password,
-      :user_password_confirmation
+      :object,
+      :old_password,
+      :password,
+      :password_confirmation
     )
 
-    validates :user_old_password, presence: true
-    validates :user_password, presence: true
-    validates :user_password_confirmation, presence: true
-    validates :user_password, confirmation: true
+    validates :old_password, presence: true
+    validates :password,     presence: true
+    validates :password,     confirmation: true
 
-    validate  :check_old_password
-
-    def update
-      return false if invalid?
-      update_user
-    end
+    validate :check_old_password
 
     def self.model_name
       ActiveModel::Name.new(self, nil, 'User')
@@ -27,17 +19,27 @@ module Users
 
     private
 
-    def update_user
-      @user.update(
-        password: @user_password,
-        password_confirmation: @user_password_confirmation
-      )
+    def klass
+      User
+    end
+
+    def set_attributes; end;
+
+    def object_params
+      {
+        password: @password,
+        password_confirmation: @password
+      }
     end
 
     def check_old_password
-      if !@user.valid_password?(@user_old_password)
-        errors.add(:user_old_password, 'is incorrect')
+      if not user_object.valid_password?(@old_password)
+        errors.add(:old_password, 'is incorrect')
       end
+    end
+
+    def user_object
+      User.find(@object.id)
     end
   end
 end

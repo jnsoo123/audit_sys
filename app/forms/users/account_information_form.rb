@@ -1,26 +1,13 @@
 module Users
-  class AccountInformationForm
-    include ActiveModel::Model
-
+  class AccountInformationForm < FormObject
     attr_accessor(
-      :user,
-      :user_name,
-      :user_email
+      :object,
+      :name,
+      :email
     )
 
-    validates :user_name,  presence: true
-    validates :user_email, presence: true
-
-    def initialize(attr={})
-      super
-      @user_name  ||= user.name
-      @user_email ||= user.email
-    end
-
-    def update
-      return false if invalid?
-      update_user
-    end 
+    validates :name,  presence: true
+    validates :email, presence: true
 
     def self.model_name
       ActiveModel::Name.new(self, nil, 'User')
@@ -28,11 +15,20 @@ module Users
 
     private
 
-    def update_user
-      @user.update(
-        name: @user_name,
-        email: @user_email
-      )
+    def klass
+      User
+    end
+
+    def set_attributes
+      @name  ||= self.object.name
+      @email ||= self.object.email
+    end
+
+    def object_params
+      {
+        name:  @name,
+        email: @email 
+      }
     end
   end
 end
