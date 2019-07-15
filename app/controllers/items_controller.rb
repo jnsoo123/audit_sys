@@ -1,12 +1,13 @@
 class ItemsController < ApplicationController
   def index
-    @q     = Item.includes(:category).ransack(params[:q])
-    @items = @q.result
+    @q     = Item.includes(:category, :build).ransack(params[:q])
+    @items = @q.result.decorate
   end
 
   def new
     @item       = ItemForm.new
     @categories = Category.all
+    @builds     = Build.all
   end
 
   def create
@@ -18,7 +19,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = ItemForm.new(item: item)
+    @item       = ItemForm.new(item: item)
+    @categories = Category.all
+    @builds     = Build.all
   end
 
   def update
@@ -42,7 +45,8 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :date_purchased, :category_id, :specs)
+    params.require(:item)
+      .permit(:name, :date_purchased, :category_id, :specs, :build_id)
   end
 
   def item

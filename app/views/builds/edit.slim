@@ -1,0 +1,9 @@
+.build-edit
+  .clearfix
+    h3 Edit Build
+  br 
+  = simple_form_for @build_form, url: build_path, method: :put do |f|
+    = f.input :name, input_html: { autocomplete: 'off', autofocus: 'on' }
+    = f.submit 'Update Build', class: 'btn btn-primary'
+    = f.button :button, 'Clear', type: 'reset', class: 'btn btn-link', style: 'margin-left: 4px;'
+

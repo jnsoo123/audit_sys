@@ -3,18 +3,20 @@
     .float-left
       h3 Items
     .float-right
-      = link_to 'Create', new_item_path, class: 'btn btn-primary'
+      = link_to icon('fas', 'plus', ' Create'), new_item_path, class: 'btn btn-success'
 
   br
 
   = search_form_for @q do |f|
-    = f.search_field :name_or_specs_cont, class: 'form-control', placeholder: 'Search a name or spec...'
+    = f.search_field :name_or_specs_or_build_name_cont, class: 'form-control', placeholder: 'Search a name, spec, or build...'
 
   br 
 
   table.table.table-bordered
     thead
       tr
+        th ID
+        th Build
         th Name
         th Date Purchased
         th Specs
@@ -22,10 +24,12 @@
     tbody
       - @items.each do |item|
         tr
+          td= item.id
+          td= item.build&.name || '---'
           td
             = item.name
             span.badge.ml-2 data-background-color='#{item.category.color}' style="background-color: #{item.category.color};"= item.category.name
-          td= item.date_purchased
+          td= item.purchased_at
           td= item.specs
           td
             .btn-group

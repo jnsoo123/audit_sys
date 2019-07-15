@@ -22,7 +22,9 @@ gem 'bootstrap-datepicker-rails', '~> 1.8.0.1'
 gem 'ransack', '~> 2.1.1'
 gem 'devise', '~> 4.6.2'
 gem 'font-awesome-sass', '~> 5.8.1'
+gem 'rqrcode', '~> 0.10.1'
 gem 'virtus', '~> 1.0.5'
+gem 'draper', '~> 3.1.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

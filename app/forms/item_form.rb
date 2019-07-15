@@ -6,7 +6,8 @@ class ItemForm
     :name,
     :date_purchased,
     :specs,
-    :category_id
+    :category_id,
+    :build_id
   )
 
   validates :name,           presence: true
@@ -43,7 +44,7 @@ class ItemForm
     @date_purchased ||= @item.date_purchased
     @specs          ||= @item.specs
     @category_id    ||= @item.category_id
-  end
+    @build_id       ||= @item.build_id end
 
   def create_item
     Item.create(item_params)
@@ -59,10 +60,11 @@ class ItemForm
 
   def item_params
     {
-      name: name,
-      date_purchased: date_purchased,
-      specs: specs,
-      category_id: category_id
+      name:           @name,
+      date_purchased: @date_purchased,
+      specs:          @specs,
+      category_id:    @category_id,
+      build_id:       @build_id
     }
   end
 end

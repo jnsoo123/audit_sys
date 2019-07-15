@@ -1,0 +1,9 @@
+.builds-new
+  .clearfix
+    h3 New Build
+  br 
+  = simple_form_for @build do |f|
+    = f.input :name, input_html: { autocomplete: 'off', autofocus: 'on' }
+    = f.button :submit, class: 'btn-primary'
+    = f.button :button, 'Clear', type: 'reset', class: 'btn btn-link', style: 'margin-left: 4px;'
+
