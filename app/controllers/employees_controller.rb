@@ -39,7 +39,7 @@ class EmployeesController < ApplicationController
     @employee_form = EmployeeForm.new(object: @employee)
 
     if @employee_form.destroy
-      redirect_to employees_path
+      redirect_to employees_path, notice: 'Employee Deleted !!'
     end
   end
 

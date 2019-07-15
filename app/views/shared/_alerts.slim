@@ -1,0 +1,6 @@
+- flash.each do |key, content|
+  - if key != 'timedout' && content.present?
+    div class=("alert alert-dismissible alert-#{key == 'notice' ? 'success' : 'danger'}") role='alert'
+      button.close data-dismiss="alert" type="button" aria-label='Close'
+        span aria-hidden='true' &times;
+      span= content
