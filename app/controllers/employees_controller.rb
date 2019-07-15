@@ -36,6 +36,11 @@ class EmployeesController < ApplicationController
   end
 
   def destroy
+    @employee_form = EmployeeForm.new(object: @employee)
+
+    if @employee_form.destroy
+      redirect_to employees_path
+    end
   end
 
   private
