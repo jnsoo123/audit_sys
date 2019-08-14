@@ -25,3 +25,34 @@ nav {
     height: 500px;
   }
 }
+
+.boxie-thing {
+  width: 100%;
+  height: 100px;
+  padding: 8px;
+  color: #fff;
+
+  a {
+    color: #fff;
+  }
+  .count {
+    color: #fff;
+    font-size: 20px;
+  }
+
+  &.boxie-thing__red {
+    background-color: $danger;
+  }
+
+  &.boxie-thing__blue {
+    background-color: $info;
+  }
+
+  &.boxie-thing__green {
+    background-color: $success;
+  }
+
+  &.boxie-thing__yellow {
+    background-color: $warning;
+  }
+}

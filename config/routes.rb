@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :builds,     only: [:index, :new, :create, :edit, :update, :destroy]
   resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :employees,  only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :dashboard,  only: [:index]
   resource  :user,       only: [:show]
 
   scope module: :users, path: 'users' do
@@ -12,5 +13,5 @@ Rails.application.routes.draw do
     resource :change_passwords,     only: [:edit, :update]
   end
 
-  root to: 'items#index'
+  root to: 'dashboard#index'
 end
