@@ -1,0 +1,76 @@
+h1 Dashboard
+.row
+  .col-3
+    .boxie-thing.boxie-thing__blue
+      .count
+        = Build.count
+      br
+      h2
+        .clearfix
+          .float-left
+            | Assets
+          .float-right
+            = link_to icon('fas', 'info-circle'), builds_path
+  .col-3
+    .boxie-thing.boxie-thing__red
+      .count
+        = Item.count
+      br
+      h2
+        .clearfix
+          .float-left
+            | Items
+          .float-right
+            = link_to icon('fas', 'info-circle'), items_path
+  .col-3
+    .boxie-thing.boxie-thing__yellow
+      .count
+        = Category.count
+      br
+      h2
+        .clearfix
+          .float-left
+            | Categories
+          .float-right
+            = link_to icon('fas', 'info-circle'), categories_path
+  .col-3
+    .boxie-thing.boxie-thing__green
+      .count
+        = Employee.count
+      br
+      h2
+        .clearfix
+          .float-left
+            | Employees
+          .float-right
+            = link_to icon('fas', 'info-circle'), employees_path
+br
+br
+h4 Recent Activity
+table.table.table-bordered
+  thead
+    tr
+      th Date
+      th User
+      th Action
+      th Item
+      th Target
+  tbody
+    tr
+      td Test
+      td Test
+      td Test
+      td Test
+      td Test
+    tr
+      td Test
+      td Test
+      td Test
+      td Test
+      td Test
+    tr
+      td Test
+      td Test
+      td Test
+      td Test
+      td Test

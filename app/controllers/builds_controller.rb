@@ -8,7 +8,7 @@ class BuildsController < ApplicationController
 
   def new
     @build = BuildForm.new
-    @items = Item.all.map { |item| [item.id, item.name] }
+    @items = Item.buildless
   end
 
   def create
@@ -20,6 +20,7 @@ class BuildsController < ApplicationController
 
   def edit
     @build_form = BuildForm.new(object: @build)
+    @items      = Item.buildless + @build.items
   end
 
   def update
@@ -45,6 +46,6 @@ class BuildsController < ApplicationController
   end
 
   def build_params
-    params.require(:build).permit(:name)
+    params.require(:build).permit(:name, items: [])
   end
 end

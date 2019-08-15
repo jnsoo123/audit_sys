@@ -5,15 +5,16 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+// For ALL
 body {
   margin-top: 20px;
 }
 
 nav {
-//  border-bottom: 2px solid #f47421;
   margin-bottom: 20px;
 }
 
+// Login CSS
 .login-form {
   width: 500px;
   background-color: whitesmoke;
@@ -26,6 +27,7 @@ nav {
   }
 }
 
+// Dashboard CSS
 .boxie-thing {
   width: 100%;
   height: 100px;
