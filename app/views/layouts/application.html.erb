@@ -19,7 +19,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item <%= active_page?(dashboard_index_path) %> <%= active_page?(root_path) %>">
-              <%= link_to icon('fas', 'home'), dashboard_index_path, class: 'nav-link' %>
+              <%= link_to icon('fas', 'home'), dashboard_index_path, class: 'nav-link', data: { toggle: 'tooltip', placement: 'bottom', title: 'Dashboard' } %>
+            </li>
+            <li class="nav-item <%= active_page?(builds_path) %>">
+              <%= link_to icon('fas', 'server'), builds_path, class: 'nav-link', data: { toggle: 'tooltip', placement: 'bottom', title: 'Assets' } %>
+            </li>
+            <li class="nav-item <%= active_page?(items_path) %>">
+              <%= link_to icon('far', 'keyboard'), items_path, class: 'nav-link', data: { toggle: 'tooltip', placement: 'bottom', title: 'Components' } %>
+            </li>
+            <li class="nav-item <%= active_page?(categories_path) %>">
+              <%= link_to icon('fas', 'cubes'), categories_path, class: 'nav-link', data: { toggle: 'tooltip', placement: 'bottom', title: 'Categories' } %>
+            </li>
+            <li class="nav-item <%= active_page?(employees_path) %>">
+              <%= link_to icon('fas', 'users'), employees_path, class: 'nav-link', data: { toggle: 'tooltip', placement: 'bottom', title: 'Employees' } %>
             </li>
           </ul>
           <ul class='navbar-nav'>
@@ -28,10 +40,10 @@
                 <%= icon('fas', 'plus') %> Create New
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <%= link_to 'Asset', new_build_path, class: 'dropdown-item' %>
-                <%= link_to 'Item', new_item_path, class: 'dropdown-item' %>
-                <%= link_to 'Category', new_category_path, class: 'dropdown-item' %>
-                <%= link_to 'Employee', new_employee_path, class: 'dropdown-item' %>
+                <%= link_to icon('fas', 'server', 'Asset'), new_build_path, class: 'dropdown-item' %>
+                <%= link_to icon('far', 'keyboard', 'Component'), new_item_path, class: 'dropdown-item' %>
+                <%= link_to icon('fas', 'cubes', 'Category'), new_category_path, class: 'dropdown-item' %>
+                <%= link_to icon('fas', 'users', 'Employee'), new_employee_path, class: 'dropdown-item' %>
               </div>
             </li>
           </ul>
