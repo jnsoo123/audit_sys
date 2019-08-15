@@ -25,6 +25,7 @@ gem 'font-awesome-sass', '~> 5.8.1'
 gem 'rqrcode', '~> 0.10.1'
 gem 'virtus', '~> 1.0.5'
 gem 'draper', '~> 3.1.0'
+gem 'paper_trail', '~> 10.3.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

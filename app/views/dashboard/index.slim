@@ -54,23 +54,11 @@ table.table.table-bordered
       th User
       th Action
       th Item
-      th Target
   tbody
-    tr
-      td Test
-      td Test
-      td Test
-      td Test
-      td Test
-    tr
-      td Test
-      td Test
-      td Test
-      td Test
-      td Test
-    tr
-      td Test
-      td Test
-      td Test
-      td Test
-      td Test
+    - @trails.each do |trail|
+      tr
+        td= trail.created_at
+        td= User.find(trail.whodunnit).name
+        td= trail.event
+        td= eval(trail.item_type).find(trail.item_id).name
+
