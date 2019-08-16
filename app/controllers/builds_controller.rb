@@ -1,5 +1,5 @@
 class BuildsController < ApplicationController
-  before_action :set_build, only: [:edit, :update, :destroy]
+  before_action :set_build, only: [:edit, :update, :destroy, :show]
 
   def index
     @q      = Build.ransack(params[:q])
@@ -31,6 +31,9 @@ class BuildsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def destroy
     @build_form = BuildForm.new(object: @build)
 
@@ -42,7 +45,7 @@ class BuildsController < ApplicationController
   private
 
   def set_build
-    @build = Build.find(params[:id])
+    @build = Build.find(params[:id]).decorate
   end
 
   def build_params

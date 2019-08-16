@@ -5,4 +5,12 @@ class ApplicationDecorator < Draper::Decorator
   #   def percent_amount
   #     h.number_to_percentage object.amount, precision: 2
   #   end
+  
+  def created_at
+    object.created_at.strftime('%B %-d, %Y')
+  end
+
+  def updated_at
+    object.updated_at.strftime('%B %-d, %Y')
+  end
 end

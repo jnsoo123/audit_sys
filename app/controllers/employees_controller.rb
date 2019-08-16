@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  before_action :set_employee, only: [:edit, :update, :destroy]
+  before_action :set_employee, only: [:show, :edit, :update, :destroy]
 
   def index
     @q         = Employee.ransack(params[:q])
@@ -35,6 +35,9 @@ class EmployeesController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def destroy
     @employee_form = EmployeeForm.new(object: @employee)
 
@@ -46,7 +49,7 @@ class EmployeesController < ApplicationController
   private
 
   def set_employee
-    @employee = Employee.find(params[:id])
+    @employee = Employee.find(params[:id]).decorate
   end
 
   def employee_params

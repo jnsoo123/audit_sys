@@ -31,6 +31,10 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def show
+    @category = category
+  end
+
   def destroy
     @category = CategoryForm.new(object: category)
 
@@ -46,6 +50,6 @@ class CategoriesController < ApplicationController
   end
 
   def category
-    Category.find(params[:id])
+    Category.find(params[:id]).decorate
   end
 end

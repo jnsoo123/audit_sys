@@ -34,6 +34,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @item = item
+  end
+
   def destroy
     @item = ItemForm.new(object: item)
 
@@ -50,6 +54,6 @@ class ItemsController < ApplicationController
   end
 
   def item
-    Item.find(params[:id])
+    Item.find(params[:id]).decorate
   end
 end

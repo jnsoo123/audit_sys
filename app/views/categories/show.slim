@@ -1,0 +1,29 @@
+.categories-show
+  .clearfix
+    h3 Category Details
+  hr
+  .row
+    dt.col-4 ID
+    dd.col-8= @category.id
+    dt.col-4 Name
+    dd.col-8= @category.name
+    dt.col-4 Color
+    dd.col-8 
+      span style='background-color: #{@category.color}' 
+        = @category.color
+    dt.col-4 Created At
+    dd.col-8= @category.created_at
+    dt.col-4 Updated At
+    dd.col-8= @category.updated_at
+  br
+  .clearfix
+    h3 Component List
+  hr 
+  table.table.table-bordered
+    thead 
+      tr
+        th Name
+    tbody
+      - @category.items.each do |item|
+        tr
+          td= link_to item.name, item_path(item)

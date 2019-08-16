@@ -1,0 +1,20 @@
+.items-show
+  .clearfix
+    h3 Component Details
+  hr
+  .row
+    dt.col-4 ID
+    dd.col-8= @item.id
+    dt.col-4 Build
+    dd.col-8= @item.build.present? ? link_to(@item.build.name, build_path(@item.build)) : '--'
+    dt.col-4 Name
+    dd.col-8= @item.name
+    dt.col-4 Specs
+    dd.col-8= @item.specs.presence || '--'
+    dt.col-4 Date Purchased
+    dd.col-8= @item.date_purchased
+    dt.col-4 Created At
+    dd.col-8= @item.created_at
+    dt.col-4 Updated At
+    dd.col-8= @item.updated_at
+

@@ -1,0 +1,25 @@
+.builds-show
+  .clearfix
+    h3 Asset Details
+  hr
+  .row
+    dt.col-4 ID
+    dd.col-8= @build.id
+    dt.col-4 Name
+    dd.col-8= @build.name
+    dt.col-4 Created At
+    dd.col-8= @build.created_at
+    dt.col-4 Updated At
+    dd.col-8= @build.updated_at
+  br
+  .clearfix
+    h3 Component List
+  hr
+  table.table.table-bordered
+    thead
+      tr
+        th Name
+    tbody
+      - @build.items.each do |item|
+        tr
+          td= link_to item.name, item_path(item)

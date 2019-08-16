@@ -1,9 +1,12 @@
-@import "bootswatch/sandstone/variables";
+$primary: #ff6c00;
+
+@import "bootswatch/pulse/variables";
 @import "bootstrap";
 @import "bootstrap-datepicker";
-@import "bootswatch/sandstone/bootswatch";
+@import "bootswatch/pulse/bootswatch";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
 
 // For ALL
 body {
